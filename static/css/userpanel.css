@@ -1,0 +1,75 @@
+html{
+    font-family: Lato, sans-serif;
+}
+*,*::after,*::before{
+    box-sizing: inherit;
+}
+body{
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+.navi{
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 17px;
+}
+.navi__title{
+   display:flex;
+   align-items:center;
+   font-size:19px;
+}
+.navi__logo{
+   margin-right:30px;
+   height: 30px;
+   width:30px
+}
+.navi__title{
+   color: #23b7d9;
+   font-weight: bold;
+}
+ .navi__menu{
+    display:flex;
+    flex-direction:row;
+    padding = 0;
+    color: #5c6b70;
+    list-style:none;
+    float:left;
+    font-size:15;
+    margin-top:17px;
+ }
+ .navi__menu__item{
+    color: inherit;
+    margin-left: 50px;
+ }
+ .navi__register{
+    color: inherit;
+    text-decoration: none;
+ }
+ .ig0{
+    width: 25px;
+    height: 25px;
+    margin-left: -50px;
+ }
+ .points3{
+    font-size: 24px;
+    margin-left: 45px;
+    margin-top: -30px;
+ }
+ .ig1{
+     width: 30px;
+     height: 30px;
+     margin-top: 20px;
+     margin-left: -50px;
+ }
+ .like4{
+    margin-left: 45px;
+    margin-top: -33px;
+    font-size: 24px;
+
+ }

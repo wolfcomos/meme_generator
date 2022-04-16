@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>话题1</title>
+    <link rel="stylesheet" href="/static/css/tiezi.css" />
+    <header class="navi" style="border:2px solid #3d90f5">
+        <div class="navi__title">
+            <img class = "navi__logo" src="/static/images/image.png">
+            <p class="navi__title">Dr.HeArt</p >
+        </div>
+        <div class="navi__menu">
+            <li class="navi__menu__item"><a href="/" class="navi__link">首页</a ></li>
+            <li class="navi__menu__item"><a href="     " class="navi__link">帖子广场</a ></li>
+            <li class="navi__menu__item"><a href="      " class="navi__link">评分系统</a ></li>
+            <li class="navi__menu__item"><a href="person_profile" class="navi__link">个人中心</a ></li>
+
+        </div>
+    </header>
+    <style>
+        background:red;
+        #rate {background-color:yellow; width:60%;}
+        .tag{
+
+         width:63%;
+         height:225px;
+         background-color: #89D5FF;
+         margin:0 auto;
+         border-radius:20px;
+         box-shadow:1px 2px;
+        }
+        .comm{
+        margin-left:10px;
+
+
+        }
+        .title{
+         width:63%;
+         height:250px;
+         margin:0 auto;
+         background-color:	#F0E68C;
+         border-radius:5px;
+         box-shadow:1px 1px;
+        }
+        .av{
+        width:30px;
+        height:30px;
+        border-radius:15px;
+        margin-left:9px;
+        margin-top:9px;
+        box-shadow:1px 1px;
+        }
+        .ap{
+        width:30px;
+        height:30px;
+        border-radius:15px;
+        margin-left:13px;
+        margin-top:90px;
+        box-shadow:1px 1px;
+        }.text{
+
+         width:67%;
+         height:225px;
+         background-color: #8BD0FF;
+         margin:0 auto;
+         border-radius:20px;
+         box-shadow:1px 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+
+       <div class="title" >
+           <img class="av" src="/static/images/1920px-Piet_Mondrian,_1942_-_Broadway_Boogie_Woogie copy.jpg"  />
+<!--           style="height: 300px; background-color: #FF7204;"-->
+           <p>{{ user }}       {{ date }}</p>
+           <p class="comm">
+           <b>{{ content }}</b>
+           <h4 style="margin-left:10px">在线等，急！</h4>
+           </p>
+       </div>
+        <br>
+<!--<p style="border:2px solid #3d90f5">1234</p>-->
+
+                <u1>
+                    <div class="tag"  >
+                        <img class="av" src="/static/images/img.jpeg"  />
+                        <p class="comm"></p>
+                        <img class="ap" src="/static/images/app.png"  />
+                        </div>
+                    <br>
+
+                    <div class="tag"  >
+                        <img class="av" src="/static/images/img.jpeg"  />
+                        <p class="comm">comments</p>
+                        <img class="ap" src="/static/images/app.png"  />
+                        </div>
+                    <br>
+
+                    <div class="tag"  >
+                        <img class="av" src="/static/images/img.jpeg"  />
+                        <p class="comm">comments</p>
+                        <img class="ap" src="/static/images/app.png"  />
+                        </div>
+                    <br>
+
+
+                <section class="text">
+                           <h1 style="margin-left:9px">由此输入</h1>
+                           <form class="form" action="/" method="POST">
+                               <p class="form__input">
+                                   <label class="form__label" for="entry" style="margin-left:9px">快来鼓励他吧</label>
+                                   <textarea class="form__textarea" name="chat_content" id="entry" ></textarea>
+                                   <button class="form__submit" type="submit">提交</button>
+                               </p >
+                           </form>
+                </section>
+                </u1>
+
+
+    </div>
+</body>
+</html>

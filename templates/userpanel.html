@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content="'width=device-width, initial-scale=1.0">
+    <meta name="'keywords" content="'HTML, CSS">
+    <meta name="'description" content="黑客送">
+    <link rel="stylesheet" href="/static/css/userpanel.css" />
+    <title>用户界面</title>
+    <style>
+        div.box1{
+
+            background-size: cover;
+            h2.4{
+                display: inline;
+                }
+        }
+        ig1{
+            margin_bottom:200px;
+        }
+
+    </style>
+</head>
+<body>
+     <header class="navi" style="border:2px solid #3d90f5">
+        <div class="navi__title">
+            <img class = "navi__logo" src="/static/images/image.png">
+            <p class="navi__title">Dr.HeArt</p>
+        </div>
+        <div class="navi__menu">
+            <li class="navi__menu__item"><a href="/" class="navi__link">首页</a></li>
+            <li class="navi__menu__item"><a href="     " class="navi__link">帖子广场</a></li>
+            <li class="navi__menu__item"><a href="      " class="navi__link">评分系统</a></li>
+            <li class="navi__menu__item"><a href="person_profile" class="navi__link">个人中心</a></li>
+
+        </div>
+    </header>
+    <div class="box1">
+    <center>
+    <div class="2" style="border:10px solid #28c9ac;width:245px">
+     <img class='ig-1' src="/static/images/Unknown-9.jpeg">
+    </div>
+    <h1>{{ name }}</h1>
+    <div class="3">
+    <img class="ig0" src="/static/images/imak.png">
+    <br>
+    <p class="points3">Points {{ credit }}</p>
+    </div>
+    <div class="3">
+    <img class="ig1" src="/static/images/Unknown-3.png">
+    <br>
+    <p class="like4">Likes {{ likes }}</p>
+    </div>
+    </center>
+        </div>
+</body>
+</html>

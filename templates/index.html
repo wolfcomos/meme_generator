@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="font-weight=hold">Meme Generator</title>
+    <link rel="stylesheet" href="/static/css/index.css" />
+</head>
+<body>
+    <header class="navi" style="border:2px solid #3d90f5">
+        <div class="navi__title">
+            <p class="navi__title">Meme Generator</p>
+        </div>
+        <div class="navi__menu">
+            <li class="navi__menu__item"><a href="/" class="navi__link">Random meme generator</a></li>
+            <li class="navi__menu__item"><a href="     " class="navi__link">Plaza</a></li>
+        </div>
+    </header>
+    <main class="con">
+         <center>
+         <section>
+             <div style="border:10px solid #3d90f5 width=225px height=400px" >
+                    <h1>Search for images</h1>
+                    </div>
+                    <form class="form" action="/" method="POST">
+                        <p class="form__input">
+                            <center>
+                            <textarea class="form__textarea" name="content" id="entry" ></textarea>
+                            <button class="form__submit" type="submit">Submit</button>
+                            </center>
+                        </p>
+                    </form>
+         </section>
+         </center>
+                <section class="unique">
+                    <h1>Image ideas</h1>
+                    {% for entry in entries %}
+                    <article class="entry">
+                        <div>
+                            <h2 class="entry__title">{{ entry[0] }}</h2>
+                            <time class="entry__date" datetime={{ entry[2] }}> {{ entry[2] }}</time>
+                        </div>
+                        <p class="entry__content">
+                            {{ entry[1] }}
+                        </p>
+                        <a href="posts/">More images</a>
+                    </article>
+                    {% endfor %}
+                </section>
+    </main>
+    <div id="app"> {{ message }}</div>
+    <script>
+        var app = new Vue({
+        el: #app,
+        data{
+         message:"hello"
+        }
+        })
+
+    </script>
+<script src="/vue.js/" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
