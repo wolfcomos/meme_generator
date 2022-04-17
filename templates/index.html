@@ -33,31 +33,20 @@
          </section>
          </center>
                 <section class="unique">
-                    <h1>Image ideas</h1>
+                    <h1>List of images</h1>
                     {% for entry in entries %}
                     <article class="entry">
                         <div>
-                            <h2 class="entry__title">{{ entry[0] }}</h2>
-                            <time class="entry__date" datetime={{ entry[2] }}> {{ entry[2] }}</time>
+                            <h2 class="entry__title"></h2>
                         </div>
                         <p class="entry__content">
-                            {{ entry[1] }}
+                        <img src="{{ entry }}" alt = "name"/>
                         </p>
-                        <a href="posts/">More images</a>
+
+                        <a href="/text_generator/{{ loop.index }}"><button class="image__submit" type="submit" name="image_index" value={{loop.index}}>Press to select</button></a>
                     </article>
                     {% endfor %}
                 </section>
     </main>
-    <div id="app"> {{ message }}</div>
-    <script>
-        var app = new Vue({
-        el: #app,
-        data{
-         message:"hello"
-        }
-        })
-
-    </script>
-<script src="/vue.js/" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

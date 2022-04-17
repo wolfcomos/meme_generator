@@ -9,8 +9,18 @@ import requests
 import os
 import sys
 from flickrapi import FlickrAPI
+from PIL import Image, ImageDraw, ImageFont
 
-#flicker initialization
+file_list = []
+dir_name = ""
+def image_processor(entry_text,address):
+    old_img = Image.open(address)
+    X, Y = old_img.size
+    new_image = old_img.resize((300, 300), Image.ANTIALIAS).transpose(Image.ROTATE_90)
+    draw = ImageDraw.Draw(new_image)
+    newfont = ImageFont.truetype('simkai.ttf', 20)
+    draw.text((40, 150), entry_text, font=newfont, fill="black")
+    new_image = new_image.save("new.jpeg")
 class Idown:
     api_key = u'17c46cc46051677475500e33ce2a0e18'
     api_secret = u'fd9bcdd95543e079'
@@ -71,17 +81,22 @@ class Idown:
         print('Getting urls for', self.name_object)
         urls = self.get_urls(self.name_object, self.number_objects)
         print('Downloading images for', self.name_object)
-        path = os.path.join('data', self.name_object)
+        path = './static'
+        path = os.path.join(path, self.name_object)
         self.download_images(urls, path)
 
-
-
+def create_file_list(dir_name):
+    list_files = []
+    for root, dirs, files in os.walk('./static/'+dir_name+'/',topdown=False):
+        for name in files:
+            list_files.append(os.path.join(root, name))
+    return list_files
 def create_app():
     app = Flask(__name__)
     api = Api(app)
     #set flask api
     client = MongoClient("mongodb+srv://wolf_comos:021115@microblogcluster.mv4br.mongodb.net/test")
-    app.db = client.TheHelp
+    app.db = client.Microblog.entries
     # connect to Mongodb database
     class Helloworld(Resource):
         def get(self):
@@ -95,36 +110,43 @@ def create_app():
     key = False
     @app.route("/", methods=["GET","POST"])
     def index():
-    #判定是否又cookie
+        global dir_name;
         #print([e for e in app.db.entries.find({})])
+        global file_list
         if request.method == "POST":
-            entry_user = request.cookies.get("name")
             entry_content = request.form.get("content")
+            dir_name = entry_content
             image_x = Idown(2, entry_content)
-            image_x.download();
+            image_x.download()
             print(entry_content)
-            formatted_date = datetime.datetime.today().strftime("%Y-%m-%d")
-            random.seed(8)
-            post_id = str(random.random()*(10^8))
-            print(post_id)
-            app.db.entries.insert({"content": entry_content,
-                                   "date": formatted_date,
-                                   "user": entry_user,
-                                   "post_id": post_id})
-            #post_id = random.seed(8)
-            # one_post = app.db.post
-            # one_post.insert({"post_id":post_id})
+            file_list = create_file_list(entry_content)
+            app.db.entries.insert({"content": entry_content})
+        return render_template("index.html", entries=file_list)
 
-        entries_with_date = [
-            (
-                entry["user"],
-                entry["content"],
-                entry["date"],
-                entry["post_id"]
-            )
-            for entry in app.db.entries.find({})
-        ]
-        return render_template("index.html", entries=entries_with_date)
-    return app;
+    @app.route("/text_generator/<picture_name>", methods=["GET", "POST"])
+    def text_generate(picture_name):
+        print("soooo cooolll")
+        print(picture_name)
+        img_path = load_image(picture_name)
+        if request.method == "POST":
+            meme_text = request.form.get("content_meme")
+            image_processor(meme_text,img_path)
+        return render_template("meme_text.html", entry_img=img_path, page_index=picture_name)
+
+    @app.route("/new_image", methods=["GET", "POST"])
+    def image_new():
+        if request.method == "GET":
+            new_image_path = './static/'+dir_name+'/new.jpeg'
+            return render_template("new_image.html", entry_image=new_image_path, dir_name=dir_name)
+
+    return app
+
+def load_image(pic_name):
+    index_name = int(pic_name)
+    img_path = file_list[index_name]
+    print(img_path)
+    return img_path
+
+
 if __name__ == "__main__":
     create_app()
