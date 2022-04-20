@@ -95,7 +95,7 @@ def create_app():
     app = Flask(__name__)
     api = Api(app)
     #set flask api
-    client = MongoClient("mongodb+srv://wolf_comos:021115@microblogcluster.mv4br.mongodb.net/test")
+    client = MongoClient("")
     app.db = client.Microblog.entries
     # connect to Mongodb database
     class Helloworld(Resource):
